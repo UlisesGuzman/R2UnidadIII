@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.proshopFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.proshopFormHeader}</h2>
+                <p:fieldset legend="#{str.proshopLegendForm}">
+                    <h:form>
+                        <h:panelGrid columns="4">
+
+                            <p:inputText placeholder="#{str.proshopOpeningHoursPrompt}"
+                                         value="#{proShopBean.proshop.openingHours}" 
+                                         style="padding-top:0px; height:24px" ></p:inputText>
+                                         <p:inputText placeholder="#{str.proshopAnnualRevenuePrompt}"
+                                                      value="#{proShopBean.proshop.annualRevenue}" 
+                                         style="padding-top:0px; height:24px" ></p:inputText>
+                                         <p:inputText placeholder="#{str.proshopOtherShopDetailsPrompt}"
+                                                      value="#{proShopBean.proshop.otherShopDetails}" 
+                                         style="padding-top:0px; height:24px" ></p:inputText>
+                                         
+
+
+                                         <p:selectOneMenu value="#{proShopBean.proshop.golfClub.idGolfClub}" style="height:29px">
+                                <f:selectItems value="#{proShopBean.golfclubs}" var="a"
+                                               itemLabel="#{a.clubName}" itemValue="#{a.idGolfClub}"></f:selectItems>
+                            </p:selectOneMenu>
+
+                        </h:panelGrid>
+                        <p:commandButton value="#{str.buttonSave}"
+                                         action="#{proShopBean.guardar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}"
+                                         action="#{proShopBean.eliminar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}"
+                                         action="#{proShopBean.cancelar()}"></p:commandButton>
+
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

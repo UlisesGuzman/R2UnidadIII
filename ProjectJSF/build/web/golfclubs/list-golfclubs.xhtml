@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.golfclubListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.golfclubListTitle}</h2>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{golfClubBean.agregar()}"></p:commandButton>
+                </h:form>
+                <p:dataTable value="#{golfClubBean.golfclubs}" var="i">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <h:commandButton value="#{str.buttonEdit}"
+                                             action="#{golfClubBean.editar(i)}"></h:commandButton>
+                        </h:form>
+                    </p:column>
+
+                    <p:column headerText="#{str.golfclubClubNameHeader}">
+                        <p:outputLabel value="#{i.clubName}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="#{str.golfclubYearEstablishedHeader}">
+                        <p:outputLabel value="#{i.yearEstablished}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="#{str.golfclubClubAddressHeader}">
+                        <p:outputLabel value="#{i.clubAddress}"></p:outputLabel>
+                    </p:column>
+                    
+                    <p:column headerText="#{str.golfclubOtherClubDetailsHeader}">
+                        <p:outputLabel value="#{i.otherClubDetails}"></p:outputLabel>
+                    </p:column>
+
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
